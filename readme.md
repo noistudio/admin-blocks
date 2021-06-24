@@ -1,7 +1,7 @@
 Blocks system for laravel 
  
 1. install package composer require noistudio/admin-blocks
-2. publish files from packages php artisan vendor:publish --tag=admin-blocks
+2. publish files from packages php artisan vendor:publish --tag=admin_blocks
 3. run migrates  php artisan migrate
 4. setup config /config/admin_blocks
 

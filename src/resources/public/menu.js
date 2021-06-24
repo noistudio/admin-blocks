@@ -209,7 +209,7 @@ $("body").on("click",".menu-editbtn-link",function(){
     var link_href=$(".link_href").val();
     var link_title=$(".link_title").val();
     var link_target=$(".link_target").val();
-    if(link_href.length>0 && link_title.length>0 && (link_target=="_target" || link_target=="_self")){
+    if(link_href.length>0 && link_title.length>0 && (link_target=="_blank" || link_target=="_self")){
         var json_links=menu_get_json();
 
         var edited_link={};
@@ -247,7 +247,7 @@ $("body").on("click",".menu-add-link",function(){
     var link_title=$(".link_title").val();
     var link_target=$(".link_target").val();
 
-    if(link_href.length>0 && link_title.length>0 && (link_target=="_target" || link_target=="_self")){
+    if(link_href.length>0 && link_title.length>0 && (link_target=="_blank" || link_target=="_self")){
 
         var new_link={};
         new_link.href=link_href;

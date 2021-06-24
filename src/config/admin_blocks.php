@@ -16,7 +16,7 @@ return [
     ],
     'types'=>[
         "trumbowyg"=>\LaravelTrumbowyg\blocks\trumbowyg\TrumbowygField::class,
-        "html"=>\AdminBlocks\fields\html\TrumbowygField::class,
+        "html"=>\AdminBlocks\fields\html\HtmlField::class,
         "menu"=>\AdminBlocks\fields\menu\MenuField::class,
         'json'=>\AdminBlocks\fields\json\JsonField::class,
 

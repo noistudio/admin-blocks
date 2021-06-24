@@ -1,7 +1,7 @@
 {
     "name": "noistudio/admin-blocks",
     "description": "Laravel Blocks system for integrate in admin panel",
-    "license": "MIT",
+    "license": "GPL-3.0-only",
     "authors": [
         {
             "name": "Artem Tatarinov",

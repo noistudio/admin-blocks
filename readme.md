@@ -1,4 +1,4 @@
-Blocks system for laravel 
+Blocks system for laravel dev-version
  
 1. install package composer require noistudio/admin-blocks
 2. publish files from packages php artisan vendor:publish --tag=admin_blocks

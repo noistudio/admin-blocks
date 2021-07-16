@@ -13,8 +13,10 @@ class AdminBlocksCreateTables extends Migration
      */
     public function up()
     {
+         
         Schema::create(config("admin_blocks.tables.blocks"), function (Blueprint $table) {
             $table->id();
+
             $table->string('title');
             $table->json("data");
             $table->boolean("enable")->default(true);

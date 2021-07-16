@@ -2,9 +2,11 @@
     <script src="{{ asset("vendor/admin_blocks/json.js") }}"></script>
 @endsection
 <div class="row json_config_row" data-public="{{ url("/") }}" style="display:none;">
-    <div class="col-12 mb-3">
-        {{ trans("admin_blocks::main.json_config") }} {{ trans("admin_blocks::main.example") }}:
-        <br class="mb-2">
+    <div class="col-4">
+        {{ trans("admin_blocks::main.json_config") }}
+        <br>
+        {{ trans("admin_blocks::main.example") }}
+        <br>
         [
         {"field_name":"field","title":"поле1","type":"text"},
         {"field_name":"avatar","title":"аватар","type":"image"},
@@ -12,12 +14,12 @@
 
         ]
     </div>
-    <div class="col-12">
-        <textarea class="form-control json_field_config" name="config">{!! json_encode($config) !!}</textarea>
+    <div class="col-8">
+     <textarea class="form-control json_field_config" name="config">{!! json_encode($config) !!}</textarea>
     </div>
 
 </div>
-<div class="row json_manage_view my-3" style="display:none">
+<div class="row json_manage_view mb-3 mt-3" style="display:none">
 
         <div class="col-5">
             {{ trans("admin_blocks::main.view") }}

@@ -1,3 +1,5 @@
+var input_count = 1;
+
 function render_menu(){
     var json_links=menu_get_json();
     var html="";
@@ -5,7 +7,7 @@ function render_menu(){
     var ul_elements=menu_render_ul(json_links,undefined);
 
     var links_title=$(".result_menu").data("links");
-    html=links_title+" <ul>"+ul_elements+"</ul>";
+    html='<div class="col-12 col-lg-4"><strong>'+links_title+'</strong></div><div class="col-12 col-lg-8 form-check">'+ul_elements+"</div>";
 
     $(".result_menu").html(html);
 
@@ -129,15 +131,16 @@ function menu_render_ul(json,subindex=undefined){
             }
             sub_ul = menu_render_ul(element.sublinks, final_index);
 
-            ul_elements = ul_elements + "<li>" + element.title + "<a  data-index='" + final_index + "' class='menu_edit_item' href='#'>"+title_edit+"</a> <a data-index='" + final_index + "' class='menu_delete_item' href='#'>"+title_delete+"</a> " + sub_ul + "</li>";
+            ul_elements = ul_elements + "<li>" + element.title + "<a  data-index='" + final_index + "' class='menu_edit_item icon-pencil btn btn-info' href='#' title='"+title_edit+"'></a> <a data-index='" + final_index + "' class='menu_delete_item icon-trash-empty btn btn-danger' title='"+title_delete+"' href='#'></a> " + sub_ul + "</li>";
         })
     }
     var new_add_index="";
     if(subindex!=undefined){
         new_add_index=subindex;
     }
-    ul_elements= ul_elements + "<li><a  data-index='" + new_add_index + "' class='menu_add_new_link_from_ul' href='#'>"+title_add+"</a></li>"
+    ul_elements= ul_elements + "<li><input class='form-check-input' type='radio' name='add-elem-here' id='input-" +input_count+ "'><label for='input-" +input_count+ "' data-index='" +new_add_index+ "' class='menu_add_new_link_from_ul icon-left btn btn-sm btn-dzenkit-action ml-0' href='#' title=''>"+title_add+"</label></li>";
     ul_elements="<ul>"+ul_elements+"</ul>";
+    input_count ++;
     return ul_elements;
 }
 function menu_save_json(json){
@@ -152,6 +155,9 @@ function menu_clear_input(){
     $(".link_title").val('');
     $(".link_target").val('');
 }
+
+
+
 $("body").on("click",".menu_add_new_link_from_ul",function(){
     var index=$(this).data("index");
     $(".row_add_btn").show();
@@ -160,6 +166,8 @@ $("body").on("click",".menu_add_new_link_from_ul",function(){
 
     return false;
 });
+
+
 $("body").on("click",".menu_edit_item",function(){
     var json_links=menu_get_json();
     var index=$(this).data("index");
@@ -283,6 +291,10 @@ $("body").on("click",".menu-add-link",function(){
 })
 $(document).ready(function(){
     render_menu();
+
+    $('label').on('click',function(){
+        $(this).prev('input').prop('checked',true);
+    });
 });
 
 

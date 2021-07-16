@@ -29,7 +29,15 @@ class BlockController extends Controller
                 $query->where("enable",$get_vars['enable']);
             }
 
-        })->get();
+        });
+        if(isset($get_vars['orderby']) and $get_vars['orderby']=="sort"){
+            $rows=$rows->orderBy("sort");
+        }
+        if(isset($get_vars['orderby']) and $get_vars['orderby']=="desc"){
+            $rows=$rows->orderByDesc("id");
+        }
+
+        $rows=$rows->get();
         $data['get_vars']=$get_vars;
         $data['rows']=$rows;
         $data['positions']=Position::query()->get();
@@ -79,6 +87,7 @@ class BlockController extends Controller
         }
 
 
+
       $content=null;
       if(isset($post['content'])){
       $content=$post['content'];
@@ -92,6 +101,8 @@ class BlockController extends Controller
         Cache::forget('admin_block_position_'.$new_block->position_id);
 
         $new_block->data=$content_field;
+        $new_block->save();
+        $new_block->sort=$new_block->id;
         $new_block->save();
 
         return redirect()->route("admin_blocks.blocks.edit",$new_block->id)->with("success",trans("admin_blocks::main.success"));
@@ -123,8 +134,13 @@ class BlockController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',
             'position_id' => 'required|integer|exists:\AdminBlocks\Models\Position,id',
+            'sort'=>'integer'
 
         ]);
+
+        if(isset($validated['sort'])){
+            $block->sort=$validated['sort'];
+        }
         $post=$request->post();
 
         $block->position_id=$validated['position_id'];

@@ -16,7 +16,7 @@ class Position extends Model
 
     public function blocks()
     {
-        return $this->hasMany(Block::class,"position_id","id");
+        return $this->hasMany(Block::class,"position_id","id")->orderBy("sort");
     }
 
 }

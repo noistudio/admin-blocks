@@ -47,9 +47,9 @@ class JsonField implements Field
                              $value_img = config("admin_blocks.public_path_for_files") . "/" . $imageName;
 
 
-                             if (isset($config_row['value']) and strlen($config_row['value']) > 0) {
-                                 unlink(public_path($config_row['value']));
-                             }
+                      //       if (isset($config_row['value']) and strlen($config_row['value']) > 0) {
+                      //           unlink(public_path($config_row['value']));
+                      //       }
                              $config_row['value'] = $value_img;
                              $result['fields'][$config_row['field_name']] = $config_row['value'];
                          }catch(\Exception $e){
@@ -67,9 +67,9 @@ class JsonField implements Field
                              $value_img = config("admin_blocks.public_path_for_files") . "/" . $imageName;
 
 
-                             if (isset($config_row['value']) and strlen($config_row['value']) > 0) {
-                                 unlink(public_path($config_row['value']));
-                             }
+                       //      if (isset($config_row['value']) and strlen($config_row['value']) > 0) {
+                      //           unlink(public_path($config_row['value']));
+                      //       }
                              $config_row['value'] = $value_img;
                              $result['fields'][$config_row['field_name']] = $config_row['value'];
                          }catch(\Exception $e){

@@ -181,6 +181,7 @@ $("body").on("click",".menu_edit_item",function(){
         $(".link_title").val(json_links[index].title);
         $(".link_target").val(json_links[index].target);
     }else {
+        index=index.toString();
         var index_array=index.split(".");
         var current_link=menu_get_link(json_links,index_array,0);
         $(".link_href").val(current_link.href);

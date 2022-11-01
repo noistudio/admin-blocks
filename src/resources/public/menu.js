@@ -232,6 +232,7 @@ $("body").on("click",".menu-editbtn-link",function(){
             json_links[index].title=edited_link.title;
             json_links[index].target=edited_link.target;
         }else {
+            index=index.toString();
             var index_array=index.split(".");
             json_links=menu_replace_to_last(json_links,index_array,edited_link,0);
 
